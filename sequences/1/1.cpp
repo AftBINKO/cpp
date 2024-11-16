@@ -2,32 +2,13 @@
 
 using namespace std;
 int main() {
-	int max1, max2, max3, n;
+	int k, f = 1;
+    cin >> k;
 
-    max1 = INT_MIN;
-    max2 = INT_MIN;
-    max3 = INT_MIN;
+    for (int i = 1; i < k + 1; i++)
+        f *= i;
 
-    cin >> n;
-    for (int i = 0; i < n; i++) {
-        int a;
-        cin >> a;
-        if (a > max1) {
-            max3 = max2;
-            max2 = max1;
-            max1 = a;
-        }
-        else if (a > max2) {
-            max3 = max2;
-            max2 = a;
-        }
-        else if (a > max3) {
-            max3 = a;
-        }
-
-    }
-
-    cout << max3;
+    cout << f;
 
 	return 0;
 }
