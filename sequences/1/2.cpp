@@ -1,26 +1,22 @@
 #include <iostream>
-#include <cstdlib>
+#include <iomanip>
 #include <cmath>
 
 using namespace std;
 
 int main() {
-    int fact = 1;
-    double x, eps, f;
+    int i = 2;
+    double x, eps, f, a = 1;
     cin >> x >> eps;
     f = 1 + x;
 
-    for (int i = 2;; i++) {
-        double a;
-        fact *= i;
-        a = pow(x, i) / fact;
+    while (a > eps) {
+        a *= x / i;
         f += a;
-
-        if (a < eps)
-            break;
+        i++;  // посчитал, что к i лучше прибавлять в конце цикла
     }
 
-    cout << round(f*1000) / 1000 << endl;
+    cout << fixed << setprecision(3) << f << endl;
 
     return 0;
 }
