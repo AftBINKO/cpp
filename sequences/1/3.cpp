@@ -1,26 +1,21 @@
 #include <iostream>
-#include <iomanip>
 #include <cmath>
+#include <iomanip>
 
 using namespace std;
 
 int main() {
-    int i = 1;
-    double x = sqrt(0.5), eps;
-    double a = x;  // , f = a;
-
+    double x = sqrt(0.5), res = x, pred_x = 0, eps, pi;
     cin >> eps;
-//    f = 1 + x;
 
-    while (x > eps) {
-        a = sqrt(0.5 + 0.5 * a);
-        x *= a;
-        i++;  // посчитал, что к i лучше прибавлять в конце цикла
-        cout << x << endl;
-
+    while ((x - pred_x) > eps) {
+        pred_x = x;
+        x = sqrt(0.5 + 0.5 * x);
+        res *= x;
     }
 
-    cout << fixed << setprecision(3) << x << endl;
+    pi = 2 / res;
+    cout << fixed << setprecision(3) << pi << endl;
 
     return 0;
 }
