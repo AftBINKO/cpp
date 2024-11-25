@@ -5,17 +5,15 @@
 using namespace std;
 
 int main() {
-    int i = 3, d = -1;
+    int i = 3;
     double x, eps, f;
     cin >> x >> eps;
     double a = x;
     f = x;
 
-    while (a > eps) {
-        a *= pow(x, 2) / ((i - 1) * i);
-        f += d * a;
-
-        d *= -1;
+    while (abs(a) > eps) {
+        a *= -(x * x) / ((i - 1) * i);
+        f += a;
         i += 2;
     }
 
