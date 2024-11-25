@@ -20,7 +20,10 @@ int main() {
                 fib2 = fib;
                 if (fib2 >= n) break;
             }
-            cout << fib1 << endl;
+            if (n == fib2)
+                cout << fib2 << endl;
+            else
+                cout << fib1 << endl;
             break;
     }
 
