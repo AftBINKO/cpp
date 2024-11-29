@@ -14,11 +14,10 @@ int main() {
             cout << fib2 << endl;
             break;
         default:
-            for (int i = 2; i < n + 1; i++) {
+            while (fib2 < n) {
                 int fib = fib2 + fib1;
                 fib1 = fib2;
                 fib2 = fib;
-                if (fib2 >= n) break;  // одну строчку добавил))
             }
             cout << fib2 << endl;
             break;
