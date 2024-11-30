@@ -10,16 +10,10 @@ int main() {
     for (int i = 0; i < n; i++)
         cin >> mas[i];
 
-    for (int i = n - 2; i >= 0; i--) {
-        for (int j = i; j < n - 1; j++) {
-            if (mas[i] < mas[i + 1])
-                swap(mas[i], mas[i + 1]);
-        }
-
-        for (int j = 0; j < n; j++)
-            cout << mas[j] << " ";
-        cout << endl;
-    }
+    for (int i = 0; i < n-1; i++)
+        for (int j = i+1; j > 0; j--)
+            if (mas[j-1] < mas[j])
+                swap(mas[j], mas[j - 1]);
 
     for (int i = 0; i < n; i++)
         cout << mas[i] << " ";
