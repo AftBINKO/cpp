@@ -11,11 +11,8 @@ int main() {
         cin >> mas[i];
     cin >> f;
 
-    for (int i = 0; i < n; i++)
-        if (mas[i] == f) {
-            k = i;
-            break;
-        }
+    for (int i = 0; k == -1 && i < n; i++)
+        if (mas[i] == f) k = i;
 
     cout << k << endl;
 
