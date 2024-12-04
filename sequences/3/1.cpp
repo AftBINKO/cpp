@@ -18,9 +18,9 @@ int main() {
             cin >> z;
             pre2 = z;
 
-            flag = (x <= y <= z) || (x >= y >= z);
+            flag = (x <= y && y <= z) || (x >= y && y >= z);
             if (flag)
-                upper = x <= y <= z;
+                upper = x <= y && y <= z;
             else
                 pre1 = y;
         } else {
@@ -31,10 +31,13 @@ int main() {
             pre2 = z;
             if (!(flag && (
                     (x <= y && y <= z) || (x >= y && y >= z)
-                    ) && upper == (x <= y && y <= z))) {
+            ) && upper == (x <= y && y <= z))) {
                 flag = (x <= y && y <= z) || (x >= y && y >= z);
-                upper = x <= y <= z;
-                pre1 = y;
+                if (flag) {
+                    pre1 = x;
+                    upper = x <= y && y <= z;
+                } else
+                    pre1 = y;
             }
         }
 
