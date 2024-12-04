@@ -3,30 +3,43 @@
 using namespace std;
 
 int main() {
-    int n, pre1, pre2, tmp, max_diff = 0, j;
-    bool flag;
+    int n, pre1, pre2, x, y, z, max_diff = 0;
+    bool upper, flag;
     cin >> n;
 
     for (int i = 0; i < n; i++) {
-        if (j == 0)
-            cin >> pre1;
-        else if (j == 1) {
-            cin >> pre2;
-            flag = pre2 <= pre1;
+        if (i == 0) {
+            cin >> x;
+            pre1 = x;
+        } else if (i == 1) {
+            cin >> y;
+            pre2 = y;
+        } else if (i == 2) {
+            cin >> z;
+            pre2 = z;
+
+            flag = (x <= y <= z) || (x >= y >= z);
+            if (flag)
+                upper = x <= y <= z;
+            else
+                pre1 = y;
         } else {
-            cin >> tmp;
-            if ((tmp > pre2 && !flag) || (tmp <= pre2 && flag))
-                pre2 = tmp;
-            else {
-                pre1 = pre2;
-                pre2 = tmp;
-                flag = pre2 <= pre1;
-                j = 1;
+            x = y;
+            y = z;
+            cin >> z;
+
+            pre2 = z;
+            if (!(flag && (
+                    (x <= y && y <= z) || (x >= y && y >= z)
+                    ) && upper == (x <= y && y <= z))) {
+                flag = (x <= y && y <= z) || (x >= y && y >= z);
+                upper = x <= y <= z;
+                pre1 = y;
             }
         }
 
-        if (j > 0 && abs(pre2 - pre1) > max_diff) max_diff = abs(pre2 - pre1);
-        if (i == j || j != 1) j++;
+        if (i > 0 && abs(pre1 - pre2) > max_diff)
+            max_diff = abs(pre1 - pre2);
     }
 
     cout << max_diff;
