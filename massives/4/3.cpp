@@ -3,7 +3,7 @@
 using namespace std;
 
 int main() {
-    int n, pre;
+    int n;
     cin >> n;
 
     int *mas = new int[n];
