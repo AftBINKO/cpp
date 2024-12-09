@@ -14,8 +14,7 @@ int main() {
     if (k != 0 && n != 1) {
         int *tmp = new int[n];
         for (int i = 0; i < n; i++) {
-            if (i - k < 0) tmp[n - abs(i - k)] = mas[i];
-            else tmp[i - k] = mas[i];
+            tmp[(i + k) % n] = mas[i];
         }
 
         for (int i = 0; i < n; i++)
