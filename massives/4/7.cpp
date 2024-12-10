@@ -17,17 +17,14 @@ int main() {
         cin >> mas2[i];
 
     sort(mas1, mas1 + n);
-    sort(mas2, mas2 + n);
+    sort(mas2, mas2 + m);
 
     int *mas3 = new int[n + m], i = 0, j = 0;
     for (int k = 0; k < n + m; k++) {
-        if ((j >= m) || (i < n && mas1[i] <= mas2[j])) {
-            mas3[k] = mas1[i];
-            i++;
-        } else {
-            mas3[k] = mas2[j];
-            j++;
-        }
+        if ((j >= m) || (i < n && mas1[i] <= mas2[j]))
+            mas3[k] = mas1[i++];
+        else
+            mas3[k] = mas2[j++];
     }
 
     for (int k = 0; k < n + m; k++)
