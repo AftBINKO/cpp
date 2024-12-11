@@ -3,7 +3,7 @@
 using namespace std;
 
 int main() {
-    int n, k, pre, t;
+    int n, k;
     cin >> n >> k;
     k %= n;
 
@@ -11,16 +11,11 @@ int main() {
     for (int i = 0; i < n; i++)
         cin >> mas[i];
 
-    if (k != 0 && n != 1) {
-        int *tmp = new int[n];
-        for (int i = 0; i < n; i++) {
-            tmp[(i + k) % n] = mas[i];
-        }
-
-        for (int i = 0; i < n; i++)
-            mas[i] = tmp[i];
-
-        delete[] tmp;
+    for (int i = 0; i < k; i++) {
+        int t = mas[n - 1];
+        for (int i = n - 1; i > 0; i--)
+            mas[i] = mas[i - 1];
+        mas[0] = t;
     }
 
     for (int i = 0; i < n; i++)
