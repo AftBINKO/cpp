@@ -11,7 +11,7 @@ int main() {
     cin.getline(str, N);
     auto l = (unsigned int) strlen(str);
 
-    for (int i = 0; i < l; i++) {
+    for (int i = 0; cnt >= 0 && i < l; i++) {
         if (str[i] == '(') cnt++;
         else if (str[i] == ')') cnt--;
     }
