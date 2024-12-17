@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstring>
 
 using namespace std;
 
@@ -11,27 +10,22 @@ int main() {
     cin.getline(str, N);
     for (int i = 0; str[i] != '\0'; i++) l++;
 
+    bool is_first = true, is_end = true;
     for (int i = 0; str[i] != '\0'; i++) {
-        if (str[i] == ' ') {
-            if (i == 0) {
-                while (str[0] == ' ') {
-                    for (int j = 0; j < l - 1; j++) {
-                        str[j] = str[j + 1];
-                    }
-                    str[--l] = '\0';
-                }
-            } else {
-                while (str[i + 1] == ' ') {
-                    for (int j = i + 1; j < l - 1; j++) {
-                        str[j] = str[j + 1];
-                    }
-                    str[--l] = '\0';
-                }
+        for (int j = i; str[j] != '\0'; j++)
+            if (str[j] != ' ') {
+                is_end = false;
+                break;
             }
-        }
+        if (is_end) break;
+        if (is_first) {
+            if (str[i] != ' ') {
+                is_first = false;
+                cout << str[i];
+            }
+        } else if (str[i] != ' ' || str[i + 1] != ' ')
+            cout << str[i];
     }
-
-    cout << str << endl;
 
     return 0;
 }
