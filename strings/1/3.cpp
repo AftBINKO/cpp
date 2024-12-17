@@ -16,7 +16,7 @@ int main() {
         mas[(unsigned int) ((unsigned char) str[i])]++;
 
     for (unsigned int i = 0; i < D; i++) {
-        if (mas[i]) cout << (unsigned char) mas[i] << ' ' << mas[i] << endl;
+        if (mas[i]) cout << (unsigned char) i << ' ' << mas[i] << endl;
     }
 
     delete[] mas;
